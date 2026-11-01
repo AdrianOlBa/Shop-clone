@@ -1,24 +1,20 @@
-import { useEffect, useState } from "react"
+import { NavLink } from "react-router"
+import { Categorie_cart } from "./Categorie_cart"
 
-import type { Category } from "../types/Categories";
+const valid_Cat: {name:string,image:string}[] = [{name:"kids",image:"https://images.pexels.com/photos/6261900/pexels-photo-6261900.jpeg"},{name:"woman",image:"https://images.pexels.com/photos/22724351/pexels-photo-22724351.jpeg"},{name:"men",image:"https://images.pexels.com/photos/14384301/pexels-photo-14384301.jpeg"}]
 
 export function Categories() {
-    const [categories, setCategories] = useState<Category | []>([]);
-
-    useEffect(() => {
-        fetch("https://fakestoreapi.noksha.dev/api/categories")
-            .then((res) => res.json())
-            .then((json) => setCategories(json.data || json))
-            .catch((error) => console.error("Error fetching categories:", error));
-    }, []);
-
-    console.log(categories)
-    console.log("render")
 
     return (
-        <div className="w-full">
- categorias
+        <>
+        <div className="text-3xl mt-5">CATEGORIES</div>
+        <NavLink to="/shop" className="w-full flex justify-around my-5">
+            {
 
-        </div>
+                valid_Cat.map((element)=>{return <Categorie_cart key={element.name} name={element.name} image={element.image}/>})
+
+            }
+        </NavLink>
+        </>
     )
 }

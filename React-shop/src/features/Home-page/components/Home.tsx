@@ -6,14 +6,10 @@ export function Home() {
     return (
         <div className="content">
             <Banner>
-                Expresa tu mejor version
+                Express your best version
             </Banner>
             <Categories />
-            
             <Gallery />
-            <div>
-                home
-            </div>
         </div>
     )
 }
