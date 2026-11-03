@@ -1,4 +1,3 @@
-import { useRef } from "react";
 import { ShopGallery } from "./Shop_gallery";
 
 export function Shop() {

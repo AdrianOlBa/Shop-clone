@@ -12,7 +12,7 @@ export function Product_Cart({ product }: { product: Product_Basic_Data }) {
   } = product;
 
   return (
-    <div className="w-60 shrink-0  relative bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+    <div className="w-60 h-100 shrink-0  relative bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
 
 
       <div className="relative w-full h-64 bg-gray-100 overflow-hidden flex items-center justify-center p-4">
