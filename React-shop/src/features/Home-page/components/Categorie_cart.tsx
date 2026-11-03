@@ -1,17 +1,19 @@
+import { NavLink } from "react-router/internal/react-server-client";
+import type { ValidCategory } from "../types/Categories";
 
 
-export function Categorie_cart({ name, image }: { name: string, image: string }) {
+export function Categorie_cart( {element} : {element:ValidCategory}) {
     return (
-        <div
+        <NavLink to={element.link}
             className="relative aspect-square w-36 md:w-64 rounded-full overflow-hidden cursor-pointer shadow-md bg-cover bg-center bg-no-repeat flex items-center justify-center"
-            style={{ backgroundImage: `url(${image})` }}
+            style={{ backgroundImage: `url(${element.image})` }}
         >
        
-            <div className="w-full aspect-square w-64 absolute bg-black opacity-50 transition-opacity hover:opacity-30"></div>
+            <div className="aspect-square w-64 absolute bg-black opacity-50 transition-opacity hover:opacity-30"></div>
 
             <span className="relative  text-white text-2xl font-semibold text-center pointer-events-none">
-                {name}
+                {element.name}
             </span>
-        </div>
+        </NavLink>
     );
 }

@@ -1,18 +1,27 @@
 import { useEffect, useRef, useState } from "react";
 import { Product_Cart } from "../../../components/Product-Cart/Product";
 import { useProducts } from "../../../hooks/useProducts";
+import { useSearchParams, type SetURLSearchParams } from "react-router";
 
-
+/*debido a limitaciones de la api no se pueden consultar productos por categoria
+por lo que se hace es traer todos los productos y guardalos y filtrarlos cuando es necesario en el front, => ya que la api no tiene un endpoint para filtrar productos por categoria y no hay sentido en hacer una consulta que traiga los mismos 30 productos en cada cambio...
+esto no es lo ideal pero es lo que hay,el flujo termina asi:
+- se traen todos los productos en un estado y un estado controla cuantos productos se deben mostrar por pantalla => ya que no esta la comodidad de hacer consultas por categoria este estado tambien se usa para controlar los productos que se deben mostrar cuando se hace un filtrado ... 
+- 
+**/
 
 export function ShopGallery() {
     console.log("rendering gallery")
     //productos totales
     const { Productos } = useProducts(true)
+    const [category]: [URLSearchParams, SetURLSearchParams] = useSearchParams();
+    const filters: URLSearchParams = category
+
     //cantidad de productos mostrados
     const [showedProducts, setShowedProducts] = useState<number>(10)
 
     //acceso a la variable showedProducts desde el observer
-    const showedProductsRef : React.RefObject<number> = useRef(showedProducts);
+    const showedProductsRef: React.RefObject<number> = useRef(showedProducts);
 
     console.log(Productos)
     console.log("showedProducts", showedProducts)
@@ -21,6 +30,14 @@ export function ShopGallery() {
     useEffect(() => {
         showedProductsRef.current = showedProducts;
     });
+
+    useEffect(() => {
+        //si hay un filtro se debe mostrar todos los productos
+        
+        filters.get("category") && setShowedProducts(30)
+        filters.get("category") || setShowedProducts(10)
+
+    }, [filters])
 
 
 
@@ -70,6 +87,9 @@ export function ShopGallery() {
             <div className="w-full flex flex-row flex-wrap justify-center content-start gap-4 min-h-[80rem]">
                 {
                     Productos && (Productos.data.slice(0, showedProducts).map((element, index) => {
+                        if (filters.get("category") && filters.get("category") !== element.category) {
+                            return null;
+                        }
                         return (
                             <Product_Cart key={element._id} product={element} />
                         )
