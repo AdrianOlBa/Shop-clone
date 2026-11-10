@@ -5,7 +5,7 @@ import type { ValidCategory } from "../types/Categories";
 export function Categorie_cart( {element} : {element:ValidCategory}) {
     return (
         <NavLink to={element.link}
-            className="relative aspect-square w-36 md:w-64 rounded-full overflow-hidden cursor-pointer shadow-md bg-cover bg-center bg-no-repeat flex items-center justify-center"
+            className="relative aspect-square w-38 md:w-52 rounded-full overflow-hidden cursor-pointer shadow-md bg-cover bg-center bg-no-repeat flex items-center justify-center"
             style={{ backgroundImage: `url(${element.image})` }}
         >
        

@@ -1,15 +1,20 @@
+import { useSearchParams, type SetURLSearchParams } from "react-router";
+import { Categories } from "./Categories";
 import { ShopGallery } from "./Shop_gallery";
 
 export function Shop() {
 
+    const [Category, set_Category]: [URLSearchParams, SetURLSearchParams] = useSearchParams();
+
+
     return (
-        
-            <div className="content " >
-                <div className="text-3xl mt-5">EXPLORE ALL PRODUCTS</div>
-                
-                 <ShopGallery  />
-            </div>
-           
-        
+
+        <div className="content " >
+            <div className="text-3xl mt-5">EXPLORE ALL PRODUCTS</div>
+            <Categories Category={Category} set_Category={set_Category} />
+            <ShopGallery Category={Category}  />
+        </div>
+
+
     )
 }

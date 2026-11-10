@@ -53,8 +53,6 @@
 #root .content{
   width: 1300px;
   max-width: 100%;
-  text-align: center;
-  height: auto;
   display: flex;
   flex-direction: column;
 }
@@ -67,16 +65,16 @@ h1,
 h2 {
   font-family: var(--heading);
   font-weight: 500;
-  color: var(--text-h);
+  /**color: var(--text-h);*/
 }
 
 h1 {
   font-size: 56px;
   letter-spacing: -1.68px;
-  margin: 32px 0;
+  margin: 10px 0;
   @media (max-width: 1024px) {
     font-size: 36px;
-    margin: 20px 0;
+
   }
 }
 h2 {

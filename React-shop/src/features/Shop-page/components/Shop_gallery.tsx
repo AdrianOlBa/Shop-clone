@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import { Product_Cart } from "../../../components/Product-Cart/Product";
 import { useProducts } from "../../../hooks/useProducts";
-import { useSearchParams, type SetURLSearchParams } from "react-router";
+
 
 /*debido a limitaciones de la api no se pueden consultar productos por categoria
 por lo que se hace es traer todos los productos y guardalos y filtrarlos cuando es necesario en el front, => ya que la api no tiene un endpoint para filtrar productos por categoria y no hay sentido en hacer una consulta que traiga los mismos 30 productos en cada cambio...
@@ -10,12 +10,13 @@ esto no es lo ideal pero es lo que hay,el flujo termina asi:
 - 
 **/
 
-export function ShopGallery() {
+export function ShopGallery({ Category }: { Category: URLSearchParams }) {
     console.log("rendering gallery")
-    //productos totales
+    //categorias
+    const filters = Category.get("category")
+
     const { Productos } = useProducts(true)
-    const [category]: [URLSearchParams, SetURLSearchParams] = useSearchParams();
-    const filters: URLSearchParams = category
+
 
     //cantidad de productos mostrados
     const [showedProducts, setShowedProducts] = useState<number>(10)
@@ -32,10 +33,10 @@ export function ShopGallery() {
     });
 
     useEffect(() => {
-        //si hay un filtro se debe mostrar todos los productos
-        
-        filters.get("category") && setShowedProducts(30)
-        filters.get("category") || setShowedProducts(10)
+        //si hay un filtro se debe mostrar todos los productos disponibles de esa categoria, si no hay filtro se muestran los productos de 10 en 10
+        console.log("filters", filters)
+        filters && setShowedProducts(30)
+        filters || setShowedProducts(10)
 
     }, [filters])
 
@@ -43,7 +44,9 @@ export function ShopGallery() {
 
     const loaderRef: React.RefObject<HTMLDivElement | null> = useRef(null)
 
-    //al cargar el componente se 
+    //al cargar el componente se agrega un observer 
+    //tambien se agrega el observer cuando se cambia el filtro
+    //si no hay filtro se activa el observer
     useEffect(() => {
         console.log("useEffect creation")
         console.log(loaderRef.current)
@@ -72,7 +75,7 @@ export function ShopGallery() {
 
         }, options);
         //si hay productos mostrados y el loaderRef.current existe, se observa el loaderRef.current
-        loaderRef.current && observer.observe(loaderRef.current);
+        filters == null && loaderRef.current && observer.observe(loaderRef.current);
 
 
         return () => {
@@ -80,14 +83,14 @@ export function ShopGallery() {
         };
 
 
-    }, []);
+    }, [filters]);
 
     return (
         <>
-            <div className="w-full flex flex-row flex-wrap justify-center content-start gap-4 min-h-[80rem]">
+            <div className="w-full flex flex-row flex-wrap justify-center content-start gap-4 min-h-screen h-auto">
                 {
                     Productos && (Productos.data.slice(0, showedProducts).map((element, index) => {
-                        if (filters.get("category") && filters.get("category") !== element.category) {
+                        if (filters && filters !== element.category) {
                             return null;
                         }
                         return (

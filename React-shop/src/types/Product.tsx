@@ -13,5 +13,5 @@ export interface Product_Basic_Data {
     discountedPrice?: number;
     brand?: string;
     size?: string[];
-    rating?: number;
+    rating: number;
 }

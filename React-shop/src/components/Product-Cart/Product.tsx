@@ -1,9 +1,11 @@
 import type { Product_Basic_Data } from "../../types/Product";
-import { Primary_button } from "../Elements/Primary-button";
+import { Star } from "./star";
+import { NavLink } from "react-router";
 
 export function Product_Cart({ product }: { product: Product_Basic_Data }) {
 
   const {
+    _id,
     title,
     price,
     image,
@@ -11,8 +13,10 @@ export function Product_Cart({ product }: { product: Product_Basic_Data }) {
     stock
   } = product;
 
+
+
   return (
-    <div className="w-60 h-100 shrink-0  relative bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+    <NavLink to={`/product/${_id}`} className="w-60 h-80 shrink-0  relative bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col ">
 
 
       <div className="relative w-full h-64 bg-gray-100 overflow-hidden flex items-center justify-center p-4">
@@ -35,9 +39,16 @@ export function Product_Cart({ product }: { product: Product_Basic_Data }) {
       <div className="p-4 flex flex-col">
         <div>
 
-          <h3 className="font-semibold text-gray-800 text-sm line-clamp-1 ">
-            {title}
-          </h3>
+          <div className="flex flex-row justify-between">
+
+            <h4 className="font-semibold text-gray-800 text-sm line-clamp-1 ">
+              {title}
+            </h4>
+            <div>
+              <Star rate={product.rating} />
+            </div>
+
+          </div>
 
 
           <div className="flex items-center gap-2 mt-2">
@@ -63,15 +74,8 @@ export function Product_Cart({ product }: { product: Product_Basic_Data }) {
 
         </div>
 
-        <Primary_button disabled={stock === 0}>
-          {stock === 0 ? "Agotado" : "Añadir al carrito"}
-        </Primary_button>
-
-
-
-
       </div>
 
-    </div>
+    </NavLink>
   );
 }

@@ -8,7 +8,7 @@ export function useProducts(all?: boolean): { Productos: Products | null, setPro
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch("https://fakestoreapi.noksha.dev/api/products"+(all ? '?page=1&perPage=30' : ''));
+                const response = await fetch("https://fakestoreapi.noksha.dev/api/products" + (all ? '?page=1&perPage=30' : ''));
                 const json = await response.json();
                 setProductos(json);
             } catch (error) {

@@ -12,7 +12,7 @@ export function Categories() {
 
     return (
         <>
-            <div className="text-3xl mt-5">CATEGORIES</div>
+            <div className="text-center text-3xl mt-5">CATEGORIES</div>
             <div className="w-full flex justify-around my-5">
                 {
 
