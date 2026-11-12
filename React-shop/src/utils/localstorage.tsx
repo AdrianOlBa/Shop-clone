@@ -1,7 +1,14 @@
 export const Products = (): void => { localStorage.getItem('products'); }
 
+
+export const all_products = (): { [index: string]: string } => {
+    return JSON.parse(localStorage.getItem("products") || "{}")
+}
+
+
+
 //cantidad de un producto en el carrito
-export const Product_quantity = (id: number) => {
+export const Product_quantity = (id: number): number => {
     const request_product: { [index: string]: number } = JSON.parse(localStorage.getItem('products') || '{}')
     console.log(request_product[id])
     console.log("cantidad")
@@ -16,7 +23,7 @@ export const Product_quantity = (id: number) => {
 
 }
 
-export const ChangeAmount = (id: number, Amount: number) => {
+export const ChangeAmount = (id: number, Amount: number): void => {
     console.log("cantidad cambiada")
     let productos: { [index: string]: Number } = JSON.parse(localStorage.getItem('products') || '{}');
 

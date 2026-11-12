@@ -8,7 +8,7 @@ export function Counter_product({ props }: { props: CounterProps }) {
     useEffect(() => { onUpdate(Amount) }, [Amount])
 
     return (
-        <div className="flex w-fit overflow-hidden border border-black rounded-lg bg-white text-black shadow-sm">
+        <div className="flex w-fit h-8 overflow-hidden border border-black rounded-lg bg-white text-black shadow-sm">
         
             <button
                 onClick={() => {
@@ -22,7 +22,7 @@ export function Counter_product({ props }: { props: CounterProps }) {
 
                     )
                 }}
-                className="w-[40px] py-3 px-3  text-black hover:bg-gray-100 select-none cursor-pointer"
+                className="w-[40px]  px-3  text-black hover:bg-gray-100 select-none cursor-pointer"
                 aria-label="Disminuir cantidad"
             >
                 -
@@ -51,7 +51,7 @@ export function Counter_product({ props }: { props: CounterProps }) {
                 onClick={() => {
                     setAmount(A => A + 1)
                 }}
-                className="w-[40px] py-3 px-3  text-black hover:bg-gray-100 select-none cursor-pointer"
+                className="w-[40px]  px-3  text-black hover:bg-gray-100 select-none cursor-pointer"
                 aria-label="Aumentar cantidad"
             >
                 +
