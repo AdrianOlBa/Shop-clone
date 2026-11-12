@@ -9,9 +9,9 @@ export function Shop() {
 
     return (
 
-        <div className="content " >
-            <div className="text-3xl mt-5">EXPLORE ALL PRODUCTS</div>
-            <Categories Category={Category} set_Category={set_Category} />
+        <div className="content flex-col" >
+            <div className="text-3xl mt-5 p-5">EXPLORE ALL PRODUCTS</div>
+            <Categories Category={Category} set_Category={set_Category}/>
             <ShopGallery Category={Category}  />
         </div>
 

@@ -59,7 +59,7 @@ export function Product_Page(): ReactNode {
 
 
     return (
-        <div className=" text-start content w-full flex flex-col text-black">
+        <div className=" text-start content w-full flex-col text-black">
 
 
             <div className="w-full   p-4 flex items-center">

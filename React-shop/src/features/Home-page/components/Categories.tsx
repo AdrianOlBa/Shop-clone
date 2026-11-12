@@ -4,7 +4,7 @@ import type { ValidCategory } from "../types/Categories"
 
 const valid_Cat: ValidCategory[] = [
     { name: "kids", image: "https://images.pexels.com/photos/6261900/pexels-photo-6261900.jpeg",link: "/shop/?category=kids" },
-    { name: "woman", image: "https://images.pexels.com/photos/22724351/pexels-photo-22724351.jpeg" ,link: "/shop/?category=woman"},
+    { name: "women", image: "https://images.pexels.com/photos/22724351/pexels-photo-22724351.jpeg" ,link: "/shop/?category=women"},
     { name: "men", image: "https://images.pexels.com/photos/14384301/pexels-photo-14384301.jpeg" ,link: "/shop/?category=men"},
 ]
 

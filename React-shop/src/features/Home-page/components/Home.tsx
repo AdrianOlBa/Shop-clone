@@ -4,7 +4,7 @@ import { Gallery } from "./Gallery";
 
 export function Home() {
     return (
-        <div className="content">
+        <div className="content flex-col">
             <Banner>
                 Express your best version
             </Banner>
