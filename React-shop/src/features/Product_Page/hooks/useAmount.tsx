@@ -1,5 +1,5 @@
-import { useEffect, useRef, useState } from "react";
-import { ChangeAmount, Product_quantity } from "../../../utils/localstorage";
+import { useRef} from "react";
+import { ChangeAmount } from "../../../utils/localstorage";
 
 
 

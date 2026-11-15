@@ -1,4 +1,4 @@
-import { NavLink } from "react-router"
+
 import { Categorie_cart } from "./Categorie_cart"
 import type { ValidCategory } from "../types/Categories"
 

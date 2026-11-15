@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type ChangeEvent, type ChangeEventHandler, type InputEvent, type InputEventHandler, type MouseEventHandler, type ReactNode } from "react";
+import { useEffect, useMemo,  useState, type ReactNode } from "react";
 import type { Product_Basic_Data } from "../../types/Product"; // Ajusta la ruta según tu proyecto
 import { NavLink, useParams } from "react-router";
 import { Product_quantity } from "../../utils/localstorage";

@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router';
+import { NavLink } from 'react-router';
 import carritoIcon from '../assets/carrito.png';
 
 export const Carrito = () => {

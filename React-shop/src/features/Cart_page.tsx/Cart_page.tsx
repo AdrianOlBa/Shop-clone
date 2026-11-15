@@ -1,7 +1,6 @@
-import { useCallback, useEffect, useMemo, useReducer, useState } from "react";
+import { useCallback, useState } from "react";
 import { all_products, ChangeAmount } from "../../utils/localstorage";
 import { Cart_item } from "./Cart_item";
-import type { Product_Basic_Data } from "../../types/Product";
 import { Checkout } from "./Checkout";
 
 export function CartPage() {
@@ -56,7 +55,7 @@ export function CartPage() {
             {/*Listado de productos del carrito*/}
             <div className="rounded-2xl w-full h-[60vh] lg:h-[80vh] lg:w-2/3 bg-gray-100 border border-gray-300 p-1 md:p-3 shadow-xl overflow-scroll scrollbar-none">
                 {
-                    Product_lenght ? Object.entries(Products).map(([Id, Amount], index) => { return <Cart_item key={Id} Id={Id} initial_value={Number(Amount)} onUpdateProduct={OnUpdateProduct} /> }) : "Agrega mas productos desde la tienda"
+                    Product_lenght ? Object.entries(Products).map(([Id, Amount]) => { return <Cart_item key={Id} Id={Id} initial_value={Number(Amount)} onUpdateProduct={OnUpdateProduct} /> }) : "Agrega mas productos desde la tienda"
 
                 }
             </div>

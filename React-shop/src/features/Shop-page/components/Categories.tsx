@@ -29,7 +29,7 @@ export function Categories({ Category, set_Category }: { Category: URLSearchPara
                     className="border border-gray-300 rounded-lg px-3 py-2 text-sm bg-white   focus: cursor-pointer"
                 >
                     {
-                        listCategories.map((item, index) => {
+                        listCategories.map((item) => {
                             return (
                                 <option key={item} value={item} selected={(Category.get("category") || "no filters") === item}>
                                     {item}

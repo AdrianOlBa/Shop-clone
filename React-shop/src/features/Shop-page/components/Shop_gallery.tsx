@@ -89,7 +89,7 @@ export function ShopGallery({ Category }: { Category: URLSearchParams }) {
         <>
             <div className="w-full flex flex-row flex-wrap justify-center content-start gap-4 min-h-screen h-auto">
                 {
-                    Productos && (Productos.data.slice(0, showedProducts).map((element, index) => {
+                    Productos && (Productos.data.slice(0, showedProducts).map((element) => {
                         if (filters && filters !== element.category) {
                             return null;
                         }
